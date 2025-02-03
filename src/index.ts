@@ -29,25 +29,14 @@ interface PacketConstructor<T extends DataPacket = DataPacket> {
     new (buffer?: Buffer): T;
 }
 
-interface TextPacketData {
-    type: TextPacketType;
-    needsTranslation: boolean;
-    source: string | null;
-    message: string;
-    parameters: string[] | null;
-    xuid: string;
-    platformChatId: string;
-    filtered: string;
-}
-
 export function createPacket<
     V extends SupportedVersions,
     T extends keyof VersionPackets[V]
 >(
     version: V,
     packetName: T,
-    initialData?: Partial<TextPacketData>
-): DataPacket {
+    initialData?: Partial<PacketDataOnly<InstanceType<VersionPackets[V][T]>>>
+): InstanceType<VersionPackets[V][T]> {
     const versionModule = version === "1.21.50" ? v12150 :
     version === "1.21.60" ? v12160 : v12140;
 
@@ -63,7 +52,7 @@ export function createPacket<
         Object.assign(packet, initialData);
     }
     
-    return packet;
+    return packet as InstanceType<VersionPackets[V][T]>;
 }
 
 export function readPacket<V extends SupportedVersions>(

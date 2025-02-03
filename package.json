@@ -1,5 +1,5 @@
 {
-  "name": "protocolms",
+  "name": "multi-protocol",
   "module": "index.ts",
 	"type": "commonjs",
   "main": "dist/index.js",
