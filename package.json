@@ -1,7 +1,7 @@
 {
   "name": "multi-protocol",
   "module": "index.ts",
-	"type": "commonjs",
+  "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,7 +10,8 @@
     "build": "tsc"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "typescript": "^5.7.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
