@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "update-protocol": "node --experimental-json-modules scripts/update-protocol.js",
-    "test": "bun tests/index.ts"
+    "download-protocol": "node --experimental-json-modules scripts/download-protocol.js",
+    "test": "bun tests/index.ts",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/bun": "latest"

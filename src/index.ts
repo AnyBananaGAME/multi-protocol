@@ -35,7 +35,9 @@ export function createPacket<
 >(
     version: V,
     packetName: T,
+    // @ts-expect-error
     initialData?: Partial<PacketDataOnly<InstanceType<VersionPackets[V][T]>>>
+    // @ts-expect-error
 ): InstanceType<VersionPackets[V][T]> {
     const versionModule = version === "1.21.50" ? v12150 :
     version === "1.21.60" ? v12160 : v12140;
@@ -52,6 +54,7 @@ export function createPacket<
         Object.assign(packet, initialData);
     }
     
+    // @ts-expect-error
     return packet as InstanceType<VersionPackets[V][T]>;
 }
 
